@@ -2,6 +2,10 @@ import os
 
 WOKRDIR = os.getcwd()
 
+if not os.path.isfile('info.csv'):
+     with open('info.csv', 'w') as csv:
+          csv.write('123456,passwd,pepa\n')
+
 if not os.path.isdir('built'):
      os.mkdir('built/tests')
 else:
