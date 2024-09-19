@@ -1,4 +1,4 @@
-import time
+import time, random
 
-def test_user_login_logout_delay() -> None:
-     time.sleep(1)
+def test_login_logout_delay() -> None:
+     time.sleep(random.randint(0, 360))
