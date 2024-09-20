@@ -3,7 +3,7 @@ from playwright.sync_api import Page, expect
 userID = '%s'
 passwd = '%s'
 
-def login(page: Page) -> None: ...
+def login(page: Page) -> None:
      page.goto('https://trabajador.relojcontrol.com/login.zul')
      expect(page).to_have_url('https://trabajador.relojcontrol.com/login.zul')
      expect(page.locator("#empleado_tab")).to_contain_text("Número de documento")
@@ -15,7 +15,7 @@ def login(page: Page) -> None: ...
      expect(page.locator("#breadcrumbs")).to_contain_text("Registrar asistencia")
 
 def test_checkin(page: Page) -> None:
-     login()
+     login(page)
 
      expect(page.locator('body')).to_contain_text('Registrar entrada')
      page.get_by_role("button", name="Registrar entrada").click()
@@ -24,7 +24,7 @@ def test_checkin(page: Page) -> None:
      expect(page.locator("body")).to_contain_text("(Entrada)")
 
 def test_checkout(page: Page) -> None:
-     login()
+     login(page)
 
      expect(page.locator('body')).to_contain_text('Registrar salida')
      page.get_by_role("button", name="Registrar salida").click()

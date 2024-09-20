@@ -7,7 +7,7 @@ if not os.path.isfile('info.csv'):
           csv.write('123456,passwd,pepa\n')
 
 if not os.path.isdir('built'):
-     os.mkdir('built/tests')
+     os.mkdir('built')
 else:
      os.system('rm -rf built/tests')
 os.mkdir('built/tests')
