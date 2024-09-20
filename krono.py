@@ -20,18 +20,18 @@ with open('info.csv') as csv:
 
 with open('tpl/test-user.py') as tpl_user:
      tpl_user = tpl_user.read()
-with open('tpl/test-log.py') as tpl_log:
-     tpl_log = tpl_log.read()
+with open('tpl/test-check.py') as tpl_check:
+     tpl_check = tpl_check.read()
 
 for user in users:
-     with open(f'built/tests/test_user_{user[0]}.py', 'w') as user_test:
-          user_test.write(tpl_user % (user[0], user[1]))
-     with open(f'built/tests/test_log_{user[0]}.py', 'w') as log_test:
-          log_test.write(tpl_log % (user[0], user[1]))
+     with open(f'built/tests/test_user_{user[0]}.py', 'w') as test_user:
+          test_user.write(tpl_user % (user[0], user[1]))
+     with open(f'built/tests/test_check_{user[0]}.py', 'w') as test_check:
+          test_check.write(tpl_check % (user[0], user[1]))
 
-with open('tpl/srv.sh') as slave:
-     with open('built/srv.sh', 'w') as new_slave:
-          new_slave.write(slave.read() % WOKRDIR)
+with open('tpl/slave.sh') as tpl_slave:
+     with open('built/slave.sh', 'w') as new_slave:
+          new_slave.write(tpl_slave.read() % WOKRDIR)
 
 with open('tpl/lili.tab') as file:
      jobs = [
@@ -40,12 +40,12 @@ with open('tpl/lili.tab') as file:
 
 with open('built/lili.tab', 'w') as file: file.writelines(jobs)
 
-os.system('crontab -l > built/temp.tab')
-os.system('cat built/lili.tab >> built/temp.tab')
+os.system('crontab -l > built/join.tab')
+os.system('cat built/lili.tab >> built/join.tab')
 print('temp cron content:')
-os.system('cat built/temp.tab')
+os.system('cat built/join.tab')
 if input('do you wish to implement into `crontab`? [y/N] ') == 'y':
-     os.system('crontab built/temp.tab')
+     os.system('crontab built/join.tab')
      print('`crontab` updated')
 else:
      print('temp file in project directory for manual use.')
