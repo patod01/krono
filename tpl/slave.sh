@@ -1,4 +1,4 @@
-if [[ $1 = "cron" ]]; then
+if [[ $1 = "job" ]]; then
      cd %s
      source .venv/bin/activate
      printf "\n\n$(date)\n" >> built/longi.txt
