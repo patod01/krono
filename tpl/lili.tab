@@ -2,9 +2,9 @@
 # * * *   *      *   command
 
 # Test job
-*/1 * * * * /bin/bash %s/built/srv.sh cron user
+*/1 * * * * /bin/bash %s/built/srv.sh job user
 
 # Actual jobs
-27 8 * * 1-5 /bin/bash %s/built/srv.sh cron login
-27 18 * * 1-4 /bin/bash %s/built/srv.sh cron logout
-27 12 * * 5 /bin/bash %s/built/srv.sh cron logout
+27 8 * * 1-5 /bin/bash %s/built/srv.sh job checkin
+27 18 * * 1-4 /bin/bash %s/built/srv.sh job checkout
+27 12 * * 5 /bin/bash %s/built/srv.sh job checkout

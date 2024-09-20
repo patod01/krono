@@ -15,8 +15,8 @@ assert os.path.isdir('built/tests')
 
 os.system('cp tpl/test-0.py built/tests/test_0.py')
 
-csv = open('info.csv')
-users = [_.split(',') for _ in csv.read().split()]
+with open('info.csv') as csv:
+     users = [_.split(',') for _ in csv.read().split()]
 
 with open('tpl/test-user.py') as tpl_user:
      tpl_user = tpl_user.read()
@@ -35,7 +35,7 @@ with open('tpl/srv.sh') as slave:
 
 with open('tpl/lili.tab') as file:
      jobs = [
-          job % WOKRDIR for job in file.readlines() if job.count('log') > 0
+          job % WOKRDIR for job in file.readlines() if job.count('check') > 0
      ]
 
 with open('built/lili.tab', 'w') as file: file.writelines(jobs)
