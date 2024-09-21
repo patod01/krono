@@ -40,12 +40,18 @@ with open('tpl/lili.tab') as file:
 
 with open('built/lili.tab', 'w') as file: file.writelines(jobs)
 
-os.system('crontab -l > built/join.tab')
+os.system('printf "### OLD CRONTAB JOBS ###\n#\n" > built/join.tab')
+os.system('crontab -l >> built/join.tab')
+os.system('printf "\n### NEW CRONTAB JOBS ###\n#\n" >> built/join.tab')
 os.system('cat built/lili.tab >> built/join.tab')
-print('temp cron content:')
+os.system('crontab -T built/join.tab')
+
+print('-> `join.tab` content:\n')
 os.system('cat built/join.tab')
-if input('do you wish to implement into `crontab`? [y/N] ') == 'y':
+print('\n-> You can edit this file at `built` prior to input the following answer.')
+print('-> Do you wish to implement into `crontab`? [y/N] ')
+if input('<: ') == 'y':
      os.system('crontab built/join.tab')
-     print('`crontab` updated')
+     print('-> `crontab` updated!')
 else:
-     print('temp file in project directory for manual use.')
+     print('-> Old `crontab` preserved.')

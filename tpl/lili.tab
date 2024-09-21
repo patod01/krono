@@ -1,5 +1,5 @@
-# m h dom mmonth dow command
-# * * *   *      *   command
+# m h dom month dow command
+# * * *   *     *   command
 
 # Test job
 */1 * * * * /bin/bash %s/built/slave.sh job user
