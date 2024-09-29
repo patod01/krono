@@ -33,16 +33,16 @@ with open('tpl/slave.sh') as tpl_slave:
      with open('built/slave.sh', 'w') as new_slave:
           new_slave.write(tpl_slave.read() % WOKRDIR)
 
-with open('tpl/lili.tab') as file:
+with open('tpl/lili.tab') as lili:
      jobs = [
-          job % WOKRDIR for job in file.readlines() if job.count('check') > 0
+          job % WOKRDIR for job in lili.readlines() if job.count('check') > 0
      ]
 
-with open('built/lili.tab', 'w') as file: file.writelines(jobs)
+with open('built/lili.tab', 'w') as lili: lili.writelines(jobs)
 
-os.system('printf "### OLD CRONTAB JOBS ###\n#\n" > built/join.tab')
-os.system('crontab -l >> built/join.tab')
-os.system('printf "\n### NEW CRONTAB JOBS ###\n#\n" >> built/join.tab')
+os.system('crontab -l > built/join.tab')
+os.system('printf "#\n#^# OLD CRONTAB JOBS #^#\n" >> built/join.tab')
+os.system('printf "### NEW CRONTAB JOBS ###\n#\n" >> built/join.tab')
 os.system('cat built/lili.tab >> built/join.tab')
 os.system('crontab -T built/join.tab')
 
