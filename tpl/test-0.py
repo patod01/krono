@@ -1,4 +1,4 @@
 import time, random
 
-def test_checkin_checkout_delay() -> None:
+def test_checkIN_checkOUT_delay() -> None:
      time.sleep(random.randint(0, 360))

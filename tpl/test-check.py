@@ -14,7 +14,7 @@ def login(page: Page) -> None:
      expect(page).to_have_url('https://trabajador.relojcontrol.com/main.zul')
      expect(page.locator("#breadcrumbs")).to_contain_text("Registrar asistencia")
 
-def test_checkin(page: Page) -> None:
+def test_checkIN(page: Page) -> None:
      login(page)
 
      expect(page.locator('body')).to_contain_text('Registrar entrada')
@@ -23,7 +23,7 @@ def test_checkin(page: Page) -> None:
      page.get_by_role("button", name="Registrar", exact=True).click()
      expect(page.locator("body")).to_contain_text("(Entrada)")
 
-def test_checkout(page: Page) -> None:
+def test_checkOUT(page: Page) -> None:
      login(page)
 
      expect(page.locator('body')).to_contain_text('Registrar salida')
