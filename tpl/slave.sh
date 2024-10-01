@@ -5,6 +5,7 @@ if [[ $1 = "job" ]]; then
      pytest -k $2 -v \
      | grep -v platform \
      | grep -v cachedir \
-     | grep -v rootdir >> built/longi.txt
+     | grep -v rootdir \
+     | grep -v '^$' >> built/longi.txt
      deactivate
 fi
