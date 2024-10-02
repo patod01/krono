@@ -31,7 +31,7 @@ def logout(page: Page) -> None:
      expect(page.locator('body')).to_contain_text('¿Cerrar Sesión?')
      page.get_by_role('button', name='OK').click()
 
-def test_user(page: Page) -> None:
+def test_USER_(page: Page) -> None:
      login(page)
      main(page)
      logout(page)
